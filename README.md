@@ -18,7 +18,6 @@ This repository contains Terraform configurations for deploying a WordPress appl
 6. [License](#license)
 
 ## Project Overview
-The image below shows our project's graphical architecture. Our traffic starts from  1. Engineers (working on the servers and some configuration/troubleshooting) and 2. Customers/Users will be routed through many layers throur automates the deployment of a WordPress website on AWS infrastructure. The infrastructure is set up using Terraform modules, promoting reusability and maintainability
 
 
 
