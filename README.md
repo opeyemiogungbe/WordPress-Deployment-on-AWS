@@ -19,6 +19,7 @@ This repository contains Terraform configurations for deploying a WordPress appl
 
 ## Project Overview
 
+![Screenshot 2024-09-17 115319](https://github.com/user-attachments/assets/6386b2f5-e11d-4930-b13c-1b16a740f2ca)
 
 
 ## Project Structure
