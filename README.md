@@ -19,8 +19,7 @@ This repository contains Terraform configurations for deploying a WordPress appl
 
 ## Project Overview
 
-![Screenshot 2024-10-07 171039](https://user-images.githubusercontent.com/12345678/architecture-diagram.png)
-
+![Screenshot 2024-10-03 103527](https://github.com/user-attachments/assets/a4e6402f-6fb1-416f-9fb4-471ab1956291)
 
 
 ## Project Structure
@@ -1089,3 +1088,58 @@ db_name         = "WordPress"      # Replace with your actual DB name
 db_username     = "admin"  # Replace with your actual DB username
 db_endpoint = "wordpress-db.c7es2eiwum1i.us-east-1.rds.amazonaws.com"
 ```
+
+The two image below show our project setup and file structure, each modules containing all the code we stated earlier
+
+![Screenshot 2024-10-17 063935](https://github.com/user-attachments/assets/f9d43ec3-0d0a-4b36-8359-afb7f2e1aa9b)
+
+![Screenshot 2024-10-17 064054](https://github.com/user-attachments/assets/195370ec-0b4f-4a1e-bf48-f30da94a62ce)
+
+## Executing the project
+
+1. First we initialiaze terraform by running:
+
+```
+Terraform init
+```
+
+The above command will initialize terraform by downloading/installing the tfstate file.. these files are needed for the smooth operation of our infrastructure configuration
+
+2. We are also going:
+
+```
+Terraform validate
+```
+This command helps make sure our configuration codes setup is valid and void of syntax errors and internal consistency. It ensures that the Terraform configuration is syntactically correct and that all references and expressions are valid. This command does not interact with any cloud provider's APIs or attempt to provision any resources; it only performs static analysis of the configuration files.
+
+![Screenshot 2024-10-17 075052](https://github.com/user-attachments/assets/61cb8ced-a452-462e-adef-3d8d3d5eacd2)
+
+The above pictures show our terraform initialized successfully and all our configurations were also valid. we are good to go to the next stage.
+
+3. Now we run:
+
+```
+Terraform plan
+```
+This is a command in Terraform that creates an execution plan, showing what actions Terraform will take to create, update, or delete infrastructure resources to reach the desired state specified in the configuration files. It compares the current state of the infrastructure (stored in the Terraform state file) with the desired state defined in the configuration files. It gives you a chance to review the planned changes before making any actual modifications to the infrastructure. This can help prevent mistakes or unintended consequences.
+
+![Screenshot 2024-10-17 075256](https://github.com/user-attachments/assets/a5b8f007-5949-402c-bf8f-20226c2d33ad)
+
+The above image is the result of our terraform plan which shows the number of resources that are going to be created. we are setting up 38 resources, so we only get to see the end resource because they are so much to be captured in one single shot.
+
+4. The last command to execute our configuration will be:
+
+```
+Terraform apply
+```
+Terrafrom appl is a command used in Terraform to execute the changes defined in the Terraform configuration files and the execution plan. It applies the changes to the infrastructure to achieve the desired state described in your Terraform configuration.
+
+![Screenshot 2024-09-06 083615](https://github.com/user-attachments/assets/83d83783-8506-4b16-bcfe-ac3e06b58687)
+
+In the image above a resource in our userdata was missing, after updating the userdata script, we ran our Terraform apply again and everything was successful.
+
+## Result
+
+The result of our configuration which is WordPress application is shown below
+
+![Screenshot 2024-09-30 061424](https://github.com/user-attachments/assets/a6f326ff-480d-4c9e-ae4a-a06b0b22dff2)
