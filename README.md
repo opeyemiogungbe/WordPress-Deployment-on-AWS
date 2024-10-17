@@ -1,6 +1,6 @@
 # WordPress Deployment on AWS
 
-This repository contains Terraform configurations for deploying a WordPress application on AWS using various AWS services, including EC2, RDS, EFS, and Load Balancer, organized into modular Terraform files.
+This repository contains Terraform configurations for deploying a WordPress application in a secure, scalable, and highly available way.  It makes use of multiple AWS services eg(EC2, RDS, EFS, and Load Balancer) to distribute traffic, automatically scale the infrastructure, provide secure data storage, and ensure that the application is always accessible, even in case of hardware failure. The project is organized into modular Terraform files.
 
 ## Table of Contents
 1. [Project Overview](#project-overview)
@@ -20,6 +20,20 @@ This repository contains Terraform configurations for deploying a WordPress appl
 ## Project Overview
 
 ![Screenshot 2024-10-03 103527](https://github.com/user-attachments/assets/a4e6402f-6fb1-416f-9fb4-471ab1956291)
+
+The image above represents a typical cloud infrastructure setup on AWS (Amazon Web Services) designed for a web application (Our Wordpress). 
+
+- Amazon Route 53: It serves as a Domain Name System (DNS), directing user traffic to the application by converting domain names into IP addresses.
+- Internet Gateway: This connects the cloud network to the internet, allowing public access to certain resources like the web servers and the load balancer.
+- VPC (Virtual Private Cloud): This is an isolated network in the cloud where all the resources (servers, databases, etc.) are hosted. It has multiple subnets (smaller network segments):
+- Public Subnets: Accessible from the internet, these host resources like the NAT Gateway and Load Balancer.
+- Private Subnets: Not directly accessible from the internet. They are used for application servers, databases, and other internal services.
+- NAT Gateway: Allows resources in the private subnets to access the internet (e.g., for software updates) while still remaining secure.
+- Application Load Balancer: Distributes incoming traffic across multiple servers to ensure that no single server is overwhelmed.
+- Auto Scaling Group: Automatically adjusts the number of running servers (web servers in this case) based on the current load, ensuring the application can handle traffic spikes.
+- Amazon RDS (Relational Database Service): This is a managed database service. In this setup, there is a master database and a standby database for high availability (backup).
+- Amazon EFS (Elastic File System): A shared file storage system that can be accessed by multiple servers. It is useful for storing files that need to be accessed by all servers in the application (e.g., user-uploaded files).
+- Multi-AZ Deployment: The resources are distributed across multiple Availability Zones (us-east-1a and us-east-1b) for high availability and fault tolerance. If one data center goes down, the application can still run from the other.
 
 
 ## Project Structure
